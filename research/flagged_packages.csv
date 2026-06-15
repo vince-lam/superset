@@ -1,0 +1,17 @@
+package,installed_version,fix_versions,cve,osv_id,cvss_score,severity,ships_in_production,summary
+jaraco-context,6.0.1,6.1.0,CVE-2026-23949,GHSA-58pv-8j8x-9vj2,8.6,HIGH,tooling,jaraco.context Has a Path Traversal Vulnerability
+pyjwt,2.12.0,2.13.0,CVE-2026-48526,PYSEC-2026-179,7.4,HIGH,runtime,
+pytest,7.4.4,9.0.3,CVE-2025-71176,GHSA-6w46-j5rx-g56g,6.8,MEDIUM,tooling,pytest has vulnerable tmpdir handling
+starlette,0.49.1,1.0.1,CVE-2026-48710,GHSA-86qp-5c8j-p5mr,6.5,MEDIUM,tooling,"Starlette has missing Host header validation that poisons request.url.path, bypassing path-based security checks"
+starlette,0.49.1,1.0.1,CVE-2026-48710,PYSEC-2026-161,6.5,MEDIUM,tooling,"BadHost: Missing Host header validation poisons request.url.path, bypassing path-based security checks"
+pip,25.1.1,25.3,CVE-2025-8869,GHSA-4xh5-x5gv-qwph,5.9,MEDIUM,tooling,pip's fallback tar extraction doesn't check symbolic links point to extraction directory
+pip,25.1.1,26.1.2,CVE-2026-8643,PYSEC-2026-196,5.5,MEDIUM,tooling,
+pyjwt,2.12.0,2.12.1,CVE-2026-48523,PYSEC-2026-176,5.4,MEDIUM,runtime,
+pyjwt,2.12.0,2.13.0,CVE-2026-48525,PYSEC-2026-178,5.3,MEDIUM,runtime,
+pip,25.1.1,26.1,CVE-2026-6357,GHSA-jp4c-xjxw-mgf9,5.3,MEDIUM,tooling,pip Vulnerable to Inclusion of Functionality from Untrusted Control Sphere
+pip,25.1.1,26.1,CVE-2026-3219,GHSA-58qw-9mgm-455v,4.6,MEDIUM,tooling,pip has an interpretation conflict due to handling both concatenated tar and ZIP files as ZIP files
+flask,2.3.3,3.1.3,CVE-2026-27205,GHSA-68rp-wp8r-4726,4.3,MEDIUM,runtime,Flask session does not add `Vary: Cookie` header when accessed in some ways
+pyjwt,2.12.0,2.13.0,CVE-2026-48522,PYSEC-2026-175,4.2,MEDIUM,runtime,
+pyjwt,2.12.0,2.13.0,CVE-2026-48524,PYSEC-2026-177,3.7,LOW,runtime,
+paramiko,3.5.1,none,CVE-2026-44405,GHSA-r374-rxx8-8654,3.4,LOW,runtime,Paramiko rsakey.py allows the SHA-1 algorithm
+pip,25.1.1,26.0,CVE-2026-1703,GHSA-6vgw-5pg2-w6jp,2.0,LOW,tooling,pip Path Traversal vulnerability
