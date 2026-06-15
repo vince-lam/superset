@@ -78,7 +78,7 @@ on latest base images using `docker compose build --pull`. In most cases though,
 ### Option #1 - for an interactive development environment
 
 ```bash
-# The --build argument insures all the layers are up-to-date
+# The --build argument ensures all the layers are up-to-date
 docker compose up --build
 ```
 
@@ -99,8 +99,8 @@ Simply trigger `npm i && npm run dev`, this should be MUCH faster.
 :::
 
 :::tip
-Sometimes, your npm-related state can get out-of-wack, running `npm run prune` from
-the `superset-frontend/` folder will nuke the various' packages `node_module/` folders
+Sometimes, your npm-related state can get out-of-whack, running `npm run prune` from
+the `superset-frontend/` folder will nuke the various packages' `node_modules/` folders
 and help you start fresh. In the context of `docker compose` setting
 `export NPM_RUN_PRUNE=true` prior to running `docker compose up` will trigger that
 from within docker. This will slow down the startup, but will fix various npm-related issues.
