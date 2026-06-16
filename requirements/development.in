@@ -20,3 +20,4 @@
 -e ./superset-extensions-cli[test]
 starlette>=1.0.1  # CVE-2026-48710: Host header validation bypass
 flask>=3.1.3,<4.0.0  # CVE-2026-27205: missing Vary: Cookie header on session access
+flask-babel>=4.0.0,<5.0.0  # Flask 3.x compat: 3.x imports removed flask.helpers.locked_cached_property
