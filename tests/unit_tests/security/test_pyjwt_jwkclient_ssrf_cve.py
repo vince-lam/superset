@@ -53,7 +53,14 @@ def test_pyjwkclient_rejects_non_http_schemes(uri: str) -> None:
     to urllib.request.urlopen() which accepted file://, ftp://, and
     data:// schemes, allowing local file reads and broader SSRF.
     """
+    from urllib.parse import urlparse
+
     from jwt import PyJWKClient, PyJWKClientError
 
-    with pytest.raises(PyJWKClientError, match="(?i)scheme"):
+    scheme = urlparse(uri).scheme
+    with pytest.raises(PyJWKClientError) as exc_info:
         PyJWKClient(uri).fetch_data()
+    assert scheme in str(exc_info.value).lower(), (
+        f"Expected error to mention the rejected scheme '{scheme}', "
+        f"got: {exc_info.value}"
+    )
