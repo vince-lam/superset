@@ -45,7 +45,7 @@ dependencies = [
     "flask-cors>=6.0.0, <7.0",
     "croniter>=0.3.28",
     "cron-descriptor",
-    "cryptography>=48.0.1",
+    "cryptography>=48.0.1, <49.0.0",
     "deprecation>=2.1.0, <2.2.0",
     "flask>=2.2.5, <4.0.0",
     "flask-appbuilder>=5.2.1, <6.0.0",
@@ -272,11 +272,6 @@ disallow_untyped_calls = false
 disallow_untyped_defs = false
 disable_error_code = "annotation-unchecked"
 
-# TODO: remove this once cryptography is fixed, introduced in cryptography 44.0.3
-[[tool.mypy.overrides]]
-module = "cryptography.*"
-ignore_errors = true
-follow_imports = "skip"
 
 # superset-core is installed as editable locally but CI may not expose types
 # This ensures consistent behavior between local dev and CI
