@@ -197,8 +197,10 @@ flask-appbuilder==5.2.1
     # via
     #   apache-superset
     #   apache-superset-core
-flask-babel==3.1.0
-    # via flask-appbuilder
+flask-babel==4.0.0
+    # via
+    #   -r requirements/development.in
+    #   flask-appbuilder
 flask-caching==2.3.1
     # via apache-superset
 flask-compress==1.17
@@ -401,6 +403,7 @@ markdown-it-py==3.0.0
     # via rich
 markupsafe==3.0.2
     # via
+    #   flask
     #   jinja2
     #   mako
     #   werkzeug
