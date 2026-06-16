@@ -20,7 +20,7 @@ name: Autofix Dependency Check
 on:
   pull_request:
     branches:
-      - main
+      - master
     paths:
       - "requirements/**"
       - "requirements*.txt"
