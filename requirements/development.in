@@ -20,3 +20,4 @@
 -e ./superset-extensions-cli[test]
 starlette>=1.0.1  # CVE-2026-48710: Host header validation bypass
 flask-babel>=4.0.0,<5.0.0  # flask-babel 3.x incompatible with Flask 3
+flask-sqlalchemy>=3.0.0,<3.1.0  # flask-sqlalchemy 2.x incompatible with Flask 3

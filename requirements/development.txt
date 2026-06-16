@@ -219,8 +219,9 @@ flask-migrate==3.1.0
     # via apache-superset
 flask-session==0.8.0
     # via apache-superset
-flask-sqlalchemy==2.5.1
+flask-sqlalchemy==3.0.5
     # via
+    #   -r requirements/development.in
     #   flask-appbuilder
     #   flask-migrate
 flask-talisman==1.1.0
