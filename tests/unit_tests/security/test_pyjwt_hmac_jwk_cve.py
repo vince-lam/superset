@@ -38,13 +38,14 @@ def test_pyjwt_version_has_hmac_jwk_fix() -> None:
     )
 
 
-def test_hmac_decode_rejects_jwk_public_key() -> None:
-    """HMAC decode must reject a JWK dict passed as the key.
+def test_hmac_rejects_jwk_public_key() -> None:
+    """HMAC encode/decode must reject a JWK dict passed as the key.
 
-    CVE-2026-48526: prior to the fix, ``jwt.decode`` with
-    ``algorithms=["HS256"]`` would accept a JWK-formatted RSA public
+    CVE-2026-48526: prior to the fix, ``jwt.encode``/``jwt.decode``
+    with ``algorithm="HS256"`` would accept a JWK-formatted RSA public
     key as the HMAC secret, enabling an algorithm-confusion attack.
-    PyJWT >=2.13.0 validates that JWK keys are not used with HMAC.
+    PyJWT >=2.13.0 rejects JWK-looking strings at both encode and
+    decode time.
     """
     rsa_n = (
         "0vx7agoebGcQSuuPiLJXZptN9nndrQmbXEps2aiAFbWhM78LhWx4"
@@ -62,17 +63,20 @@ def test_hmac_decode_rejects_jwk_public_key() -> None:
     }
     jwk_json = json.dumps(jwk_public_key)
 
+    # PyJWT >=2.13.0 rejects JWK-looking strings at encode time,
+    # at decode time, or both. Any rejection proves the fix is active.
     payload = {"sub": "attacker", "admin": True}
-    forged_token = jwt.encode(payload, jwk_json, algorithm="HS256")
+    try:
+        forged_token = jwt.encode(payload, jwk_json, algorithm="HS256")
+    except jwt.exceptions.InvalidKeyError:
+        return  # Rejected at encode — CVE is patched
 
-    # Decoding with the same JWK JSON as secret must fail — accepting
-    # it would mean an attacker with the public key can forge tokens.
     try:
         jwt.decode(forged_token, jwk_json, algorithms=["HS256"])
     except (jwt.exceptions.InvalidKeyError, jwt.exceptions.DecodeError):
-        return  # Expected: PyJWT >=2.13.0 rejects this
+        return  # Rejected at decode — CVE is patched
 
     raise AssertionError(
-        "PyJWT accepted an HMAC token verified with a JWK public key; "
+        "PyJWT accepted an HMAC token with a JWK public key as secret; "
         "this indicates CVE-2026-48526 is not patched"
     )
